@@ -5,6 +5,7 @@
       :key="todo.id"
       :todo="todo"
       @toggle-todo="onToggleTodo"
+      @delete-todo="onDeleteTodo"
     />
   </ul>
 </template>
@@ -32,6 +33,14 @@ const onToggleTodo = (id: number) => {
 
   if (targetTodo) {
     targetTodo.completed = !targetTodo.completed
+  }
+}
+
+const onDeleteTodo = (id: number) => {
+  const targetTodo = todos.value.find((todo: ITodo) => todo.id === id)
+
+  if (targetTodo) {
+    todos.value = todos.value.filter((todo: ITodo) => todo.id != id)
   }
 }
 

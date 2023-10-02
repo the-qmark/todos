@@ -8,7 +8,10 @@
       <i class="bi bi-check2"></i>
     </div>
     <span class="todo-item__text">{{ todo.text }}</span>
-    <button class="todo-item__remove-button">
+    <button
+      class="todo-item__remove-button"
+      @click.stop="deleteTodo"
+    >
       <i class="bi bi-trash3"></i>
     </button>
   </li>
@@ -26,11 +29,16 @@ const props = defineProps({
 })
 
 const emits = defineEmits({
-  'toggle-todo': (id: number) => Number.isInteger(id)
+  'toggle-todo': (id: number) => Number.isInteger(id),
+  'delete-todo': (id: number) => Number.isInteger(id)
 })
 
 const toggleTodo = () => {
   emits('toggle-todo', props.todo.id);
+}
+
+const deleteTodo = () => {
+  emits('delete-todo', props.todo.id);
 }
 
 </script>
