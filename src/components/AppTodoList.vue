@@ -11,37 +11,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { PropType, ref } from 'vue';
 import AppTodoItem from './AppTodoItem.vue'
 import { ITodo } from '@/types/Todo';
 
-const todos = ref<ITodo[]>([
-  {
-    id: 0,
-    text: 'Text 11111',
-    completed: true
-  },
-  {
-    id: 1,
-    text: 'Text 2222',
-    completed: false
-  },
-])
+
+const props = defineProps({
+  todos: Array as PropType<ITodo[]>
+})
+
+const emits = defineEmits({
+  'toggle-todo': (id: number) => Number.isInteger(id),
+  'delete-todo': (id: number) => Number.isInteger(id)
+})
 
 const onToggleTodo = (id: number) => {
-  const targetTodo = todos.value.find((todo: ITodo) => todo.id === id)
-
-  if (targetTodo) {
-    targetTodo.completed = !targetTodo.completed
-  }
+  emits('toggle-todo', id);
 }
 
 const onDeleteTodo = (id: number) => {
-  const targetTodo = todos.value.find((todo: ITodo) => todo.id === id)
-
-  if (targetTodo) {
-    todos.value = todos.value.filter((todo: ITodo) => todo.id != id)
-  }
+  emits('delete-todo', id);
 }
-
 </script>
