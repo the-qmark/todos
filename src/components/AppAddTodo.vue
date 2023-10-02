@@ -14,6 +14,7 @@
       </button>
       <div class="text-input text-input--focus">
         <input
+          ref="input"
           v-model="todoText"
           class="input"
         />
@@ -32,13 +33,17 @@
 
 <script setup lang="ts">
 import { ITodo } from '@/types/Todo';
-import { ref } from 'vue';
+import { nextTick, ref } from 'vue';
 
 const isFormVisible = ref<boolean>(false)
-const todoText = ref<string>('')
 
+const input = ref<HTMLInputElement | null>(null)
 const showForm = () => {
   isFormVisible.value = true
+  nextTick(() => {
+    if (input.value)
+      input.value?.focus()
+  })
 }
 
 const closeForm = () => {
@@ -48,6 +53,8 @@ const closeForm = () => {
 const emits = defineEmits<{
   (event: 'add-todo', todo: ITodo): void
 }>()
+
+const todoText = ref<string>('')
 
 const addTodo = () => {
   const newTodo: ITodo = {
