@@ -4,7 +4,10 @@
       <i class="bi bi-plus-lg"></i>
     </button>
     <form class="add-todo__form">
-      <button class="close-button" type="button">
+      <button
+        class="close-button"
+        type="button"
+      >
         <i class="bi bi-x"></i>
       </button>
       <div class="text-input text-input--focus">

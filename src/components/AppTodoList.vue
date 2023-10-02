@@ -1,31 +1,29 @@
 <template>
   <ul class="todo-list">
-    <li class="todo-item todo-item--done">
-      <div class="todo-item__status">
-        <i class="bi bi-check2"></i>
-      </div>
-      <span class="todo-item__text">Learn the basics of Vue</span>
-      <button class="todo-item__remove-button">
-        <i class="bi bi-trash3"></i>
-      </button>
-    </li>
-    <li class="todo-item">
-      <div class="todo-item__status">
-        <i class="bi bi-check2"></i>
-      </div>
-      <span class="todo-item__text">Learn the basics of Typescript</span>
-      <button class="todo-item__remove-button">
-        <i class="bi bi-trash3"></i>
-      </button>
-    </li>
-    <li class="todo-item">
-      <div class="todo-item__status">
-        <i class="bi bi-check2"></i>
-      </div>
-      <span class="todo-item__text">Subscribe to the channel</span>
-      <button class="todo-item__remove-button">
-        <i class="bi bi-trash3"></i>
-      </button>
-    </li>
+    <AppTodoItem
+      v-for="todo in todos"
+      :key="todo.id"
+      :todo="todo"
+    />
   </ul>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import AppTodoItem from './AppTodoItem.vue'
+import { Todo } from '@/types/Todo';
+
+const todos = ref<Todo[]>([
+  {
+    id: 0,
+    text: 'Text 11111',
+    completed: true
+  },
+  {
+    id: 1,
+    text: 'Text 2222',
+    completed: false
+  },
+])
+
+</script>
