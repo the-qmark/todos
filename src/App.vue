@@ -38,18 +38,7 @@ const onSetFilter = (filter: Filter) => {
   activeFilter.value = filter
 }
 
-const todos = ref<ITodo[]>([
-  {
-    id: 0,
-    text: 'Text 11111',
-    completed: true
-  },
-  {
-    id: 1,
-    text: 'Text 2222',
-    completed: false
-  },
-])
+const todos = ref<ITodo[]>([])
 
 const onToggleTodo = (id: number) => {
   const targetTodo = todos.value.find((todo: ITodo) => todo.id === id)
