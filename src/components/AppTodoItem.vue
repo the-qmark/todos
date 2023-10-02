@@ -15,12 +15,11 @@
 
 <script setup lang="ts">
 import { defineProps, PropType } from 'vue';
-import { Todo } from '@/types/Todo'
-
+import { ITodo } from '@/types/Todo'
 
 const props = defineProps({
   todo: {
-    type: Object as PropType<Todo>,
+    type: Object as PropType<ITodo>,
     required: true
   }
 })

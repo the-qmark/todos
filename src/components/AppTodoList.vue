@@ -11,9 +11,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import AppTodoItem from './AppTodoItem.vue'
-import { Todo } from '@/types/Todo';
+import { ITodo } from '@/types/Todo';
 
-const todos = ref<Todo[]>([
+const todos = ref<ITodo[]>([
   {
     id: 0,
     text: 'Text 11111',
