@@ -1,11 +1,14 @@
 <template>
   <AppHeader />
 
-  <AppFilters />
+  <AppFilters
+    :active-filter="activeFilter"
+    @set-filter="onSetFilter"
+  />
 
   <main class="app-main">
     <AppTodoList
-      :todos="todos"
+      :todos="filteredTodos"
       @toggle-todo="onToggleTodo"
       @delete-todo="onDeleteTodo"
     />
@@ -23,7 +26,14 @@ import AppTodoList from './components/AppTodoList.vue'
 import AppAddTodo from './components/AppAddTodo.vue'
 import AppFooter from './components/AppFooter.vue'
 import { ITodo } from './types/Todo'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { Filter } from './types/Filters'
+
+const activeFilter = ref<Filter>('All')
+
+const onSetFilter = (filter: Filter) => {
+  activeFilter.value = filter
+}
 
 const todos = ref<ITodo[]>([
   {
@@ -57,4 +67,16 @@ const onDeleteTodo = (id: number) => {
 const onAddTodo = (todo: ITodo) => {
   todos.value.push(todo)
 }
+
+const filteredTodos = computed((): ITodo[] => {
+  switch (activeFilter.value) {
+    case 'Active':
+      return todos.value.filter((todo: ITodo) => !todo.completed)
+    case 'Done':
+      return todos.value.filter((todo: ITodo) => todo.completed)
+    case 'All':
+    default:
+      return todos.value
+  }
+})
 </script>
