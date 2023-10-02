@@ -16,7 +16,7 @@
 import AppHeader from './components/AppHeader.vue'
 import AppFilters from './components/AppFilters.vue'
 import AppTodoList from './components/AppTodoList.vue'
-import AppAddTodo from './components/AppTodoList.vue'
+import AppAddTodo from './components/AppAddTodo.vue'
 import AppFooter from './components/AppFooter.vue'
 
 </script>
