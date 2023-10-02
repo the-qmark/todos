@@ -16,7 +16,10 @@
     <AppAddTodo @add-todo="onAddTodo" />
   </main>
 
-  <AppFooter />
+  <AppFooter
+    :number-active="activeTodos.length"
+    :number-done="doneTodos.length"
+  />
 </template>
 
 <script setup lang="ts">
@@ -71,12 +74,20 @@ const onAddTodo = (todo: ITodo) => {
 const filteredTodos = computed((): ITodo[] => {
   switch (activeFilter.value) {
     case 'Active':
-      return todos.value.filter((todo: ITodo) => !todo.completed)
+      return activeTodos.value
     case 'Done':
-      return todos.value.filter((todo: ITodo) => todo.completed)
+      return doneTodos.value
     case 'All':
     default:
       return todos.value
   }
+})
+
+const activeTodos = computed((): ITodo[] => {
+  return todos.value.filter((todo: ITodo) => !todo.completed)
+})
+
+const doneTodos = computed((): ITodo[] => {
+  return todos.value.filter((todo: ITodo) => todo.completed)
 })
 </script>
