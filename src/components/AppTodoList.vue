@@ -4,6 +4,7 @@
       v-for="todo in todos"
       :key="todo.id"
       :todo="todo"
+      @toggle-todo="onToggleTodo"
     />
   </ul>
 </template>
@@ -25,5 +26,13 @@ const todos = ref<ITodo[]>([
     completed: false
   },
 ])
+
+const onToggleTodo = (id: number) => {
+  const targetTodo = todos.value.find((todo: ITodo) => todo.id === id)
+
+  if (targetTodo) {
+    targetTodo.completed = !targetTodo.completed
+  }
+}
 
 </script>

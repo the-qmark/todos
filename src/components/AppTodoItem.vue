@@ -2,6 +2,7 @@
   <li
     class="todo-item "
     :class="{ 'todo-item--done': todo.completed }"
+    @click="toggleTodo"
   >
     <div class="todo-item__status">
       <i class="bi bi-check2"></i>
@@ -23,5 +24,13 @@ const props = defineProps({
     required: true
   }
 })
+
+const emits = defineEmits({
+  'toggle-todo': (id: number) => Number.isInteger(id)
+})
+
+const toggleTodo = () => {
+  emits('toggle-todo', props.todo.id);
+}
 
 </script>
