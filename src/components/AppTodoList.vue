@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, ref } from 'vue';
+import { defineProps, defineEmits, PropType } from 'vue';
 import AppTodoItem from './AppTodoItem.vue'
 import { ITodo } from '@/types/Todo';
 

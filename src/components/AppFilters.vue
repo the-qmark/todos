@@ -8,20 +8,12 @@
         :class="{ 'button--primary': activeFilter === filter }"
         @click="setFilter(filter)"
       >{{ filter }}</button>
-      <!-- <button
-        class="button"
-        :class="{ 'button--primary': activeFilter === 'Active' }"
-      >Active</button>
-      <button
-        class="button"
-        :class="{ 'button--primary': activeFilter === 'Done' }"
-      >Done</button> -->
     </section>
   </aside>
 </template>
 
 <script setup lang="ts">
-import { PropType, ref } from 'vue';
+import { defineProps, defineEmits, PropType, ref } from 'vue';
 import { Filter } from '../types/Filters';
 
 const props = defineProps({

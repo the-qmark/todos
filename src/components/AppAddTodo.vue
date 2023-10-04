@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 import { ITodo } from '@/types/Todo';
-import { nextTick, ref } from 'vue';
+import { defineEmits, nextTick, ref } from 'vue';
 
 const isFormVisible = ref<boolean>(false)
 

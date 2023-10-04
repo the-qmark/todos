@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, PropType } from 'vue';
+import { defineEmits, defineProps, PropType } from 'vue';
 import { ITodo } from '@/types/Todo'
 
 const props = defineProps({
