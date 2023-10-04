@@ -20,6 +20,8 @@
     :number-active="activeTodos.length"
     :number-done="doneTodos.length"
   />
+
+  <ThemeButton />
 </template>
 
 <script setup lang="ts">
@@ -31,6 +33,7 @@ import AppFooter from './components/AppFooter.vue'
 import { ITodo } from './types/Todo'
 import { computed, ref } from 'vue'
 import { Filter } from './types/Filters'
+import ThemeButton from './components/ThemeButton.vue'
 
 const activeFilter = ref<Filter>('All')
 

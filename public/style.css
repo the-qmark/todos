@@ -1,12 +1,23 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css");
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 :root {
-  --primary-color: #E30808;
+  --primary-color: #e30808;
   --secondary-color: #e3e3e3;
   --light-color: #f0f0f0;
   --reverse-color: #ffffff;
   --default-color: #000000;
+  --default-background: #ffffff;
+  --element-size: 6rem;
+}
+
+:root.dark-theme {
+  --primary-color: #3a99eb;
+  --secondary-color: #7e7e7e;
+  --light-color: #7e7e7e;
+  --reverse-color: #ffffff;
+  --default-color: #ffffff;
+  --default-background: #272727;
 }
 
 html {
@@ -20,7 +31,8 @@ body {
   padding: 6.4rem 1.2rem;
   font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
-  color: var(--default-color)
+  color: var(--default-color);
+  background: var(--default-background);
 }
 
 button {
@@ -68,7 +80,7 @@ button {
 .logo {
   font-size: 2.4rem;
   font-weight: 500;
-  color: var(--primary-color)
+  color: var(--primary-color);
 }
 
 .burger {
@@ -76,7 +88,7 @@ button {
 }
 
 .burger--active {
-  color: var(--primary-color)
+  color: var(--primary-color);
 }
 
 .burger:hover {
@@ -98,6 +110,7 @@ button {
   font-size: 1.6rem;
   border: 0.1rem solid var(--light-color);
   border-radius: 1.6rem;
+  background: var(--default-background);
 }
 
 .text-input--focus {
@@ -108,6 +121,8 @@ button {
   flex-grow: 1;
   padding: 0;
   border: none;
+  background: var(--default-background);
+  color: var(--default-color);
 }
 
 .text-input .input:focus {
@@ -118,7 +133,7 @@ button {
   content: '\F52A';
   font-family: bootstrap-icons !important;
   font-size: 1.7rem;
-  color: var(--primary-color)
+  color: var(--primary-color);
 }
 
 .toggle-group {
@@ -130,7 +145,9 @@ button {
 }
 
 .toggle-group .button {
+  cursor: pointer;
   font-size: 1.6rem;
+  color: var(--default-color);
 }
 
 .toggle-group .button:not(.button--primary):hover {
@@ -196,7 +213,7 @@ button {
 .todo-item__status .bi-check2 {
   position: relative;
   top: 0.1rem;
-  color: var(--primary-color)
+  color: var(--primary-color);
 }
 
 .todo-item--done .todo-item__status {
@@ -255,8 +272,10 @@ button {
 }
 
 .add-todo__form .close-button {
+  cursor: pointer;
   justify-self: end;
   font-size: 2rem;
+  color: var(--default-color);
 }
 
 .add-todo__form .close-button:hover {
@@ -266,5 +285,5 @@ button {
 .app-footer {
   font-size: 1.4rem;
   text-align: center;
-  color: var(--secondary-color)
+  color: var(--secondary-color);
 }
